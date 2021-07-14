@@ -1,33 +1,31 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: https://collab-a-block.org/
 
 # Collab-a-Block
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Collab-a-Block is a simple API allowing neighbours to lookup each other and collaborate on local matters.
 
-## Questions Collection [/questions]
+## Login Page [/]
 
-### List All Questions [GET]
+### Lookup Houses [/houses]
+
+#### List All Houses [GET]
 
 + Response 200 (application/json)
 
         [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
                     {
-                        "choice": "Swift",
-                        "votes": 2048
+                        "full address": "1 Orchard Street, London SW1 3RZ",
+                        "owner": "Samekah Howard" 
                     }, {
-                        "choice": "Python",
-                        "votes": 1024
+                        "full address": "2 Orchard Street, London SW1 3RZ",
+                        "owner": "Rafika Turemis" 
                     }, {
-                        "choice": "Objective-C",
-                        "votes": 512
+                        "full address": "3 Orchard Street, London SW1 3RZ",
+                        "owner": "Polina Moore" 
                     }, {
-                        "choice": "Ruby",
-                        "votes": 256
+                        "full address": "4 Orchard Street, London SW1 3RZ",
+                        "owner": "Freddie Moore" 
                     }
                 ]
             }
