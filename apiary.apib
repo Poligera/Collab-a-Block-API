@@ -3,75 +3,93 @@ HOST: https://collab-a-block.org/
 
 # Collab-a-Block
 
-Collab-a-Block is a simple API allowing neighbours to lookup each other and collaborate on local matters.
+Collab-a-Block is a simple API allowing neighbours to lookup each other to collaborate on local matters.
 
 ## Login Page [/]
 
-### Lookup Houses [/houses]
+## Lookup Houses [/houses]
 
-#### List All Houses [GET]
+### List All Houses [GET]
 
 + Response 200 (application/json)
 
-        [
-                    {
-                        "full address": "1 Orchard Street, London SW1 3RZ",
-                        "owner": "Samekah Howard" 
-                    }, {
-                        "full address": "2 Orchard Street, London SW1 3RZ",
-                        "owner": "Rafika Turemis" 
-                    }, {
-                        "full address": "3 Orchard Street, London SW1 3RZ",
-                        "owner": "Polina Moore" 
-                    }, {
-                        "full address": "4 Orchard Street, London SW1 3RZ",
-                        "owner": "Freddie Moore" 
-                    }
-                ]
-            }
-        ]
+[
+    {
+        "id": 1,
+        "address": [{
+                    "postcode" : "AB1 2CD",
+                    "street" : "Orchard Street"
+                    }],
+        "owner": [{
+                    "name" : "Samekah Howard",
+                    "age" : 23,
+                    "residentNumber": 2
+                }]
+   }, 
+           "id": 2,
+        "address": [{
+                    "postcode" : "AB1 2CD",
+                    "street" : "Orchard Street"
+                    }],
+        "owner": [{
+                    "name" : "Rafika Ruremis",
+                    "age" : 24,
+                    "residentNumber": 3
+                }]
+]
 
-### Create a New Question [POST]
+## Lookup Houses [/houses/:address]
+### Lookup a Particular House [GET]
 
-You may add a household to the collaborative neighbourhood by using this action. It takes a JSON
-object containing a ____
++ Response 200 (application/json)
 
-+ Request (application/json)
+[
+   {
+     "id": 1,
+     "address": [{
+                  "postcode" : "AB1 2CD",
+                  "street" : "Orchard Street"
+                }],
+     "owner": [{
+                  "name" : "Samekah Howard",
+                  "age" : 23,
+                  "residentNumber": 2
+                }]
+   }
+]
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
 
-+ Response 201 (application/json)
+## Lookup Residents by Name[/owner/:name]
+### Lookup a Resident [GET]
 
-    + Headers
++ Response 200 (application/json)
 
-            Location: /questions/2
+{
+    "name" : "Samekah Howard",
+    "age" : 23,
+    "residentNumber": 2
+}
 
-    + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+## Lookup Residents by Age Bracket[/owner?minAge=18]
+### Lookup a Resident [GET]
+
++ Response 200 (application/json)
+
+{
+    "name" : "Samekah Howard",
+    "age" : 23,
+    "residentNumber": 2
+}
+
+
+## Lookup Residents by Household Size[/owner/size?minSize=2]
+### Lookup a Resident [GET]
+
++ Response 200 (application/json)
+
+{
+    "name" : "Samekah Howard",
+    "age" : 23,
+    "residentNumber": 2
+}
